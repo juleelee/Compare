@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Télécharger les images</title>
+</head>
+<body>
+    <h1>Télécharger les images</h1>
+    <form action="/compare" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="num_images" value="<%= num_images %>">
+        <label for="groundtruth">Groundtruth:</label>
+        <input type="file" id="groundtruth" name="groundtruth" required><br>
+        <% for (let i = 1; i <= num_images; i++) { %>
+        <label for="image<%= i %>">Image <%= i %>:</label>
+        <input type="file" id="image<%= i %>" name="image<%= i %>" required><br>
+        <label for="image<%= i %>_name">Nom de l'image <%= i %>:</label>
+        <input type="text" id="image<%= i %>_name" name="image<%= i %>_name" required><br>
+        <% } %>
+        <input type="submit" value="Comparer">
+    </form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparer les images</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="images-container">
+        <div class="image-container resizable">
+            <img id="groundtruth" src="/uploads/<%= groundtruth %>" alt="Groundtruth" class="base-image">
+            <img class="psnr-mask mask" style="display:none;">
+            <img class="ssim-mask mask" style="display:none;">
+            <img class="diff-mask mask" style="display:none;">
+            <div class="cursor"></div>
+            <div class="resize-handle"></div>
+            <div class="image-info">
+                <div class="image-name">Groundtruth</div>
+            </div>
+        </div>
+        <% images.forEach(function(image) { 
+            const imageName = image.split('.').slice(0, -1).join('.'); %>
+        <div class="image-container resizable">
+            <img id="image-<%= imageName %>" src="/uploads/<%= image %>" alt="<%= imageName %>" class="base-image original-image">
+            <img class="psnr-mask mask" style="display:none;">
+            <img class="ssim-mask mask" style="display:none;">
+            <img class="diff-mask mask" style="display:none;">
+            <div class="cursor"></div>
+            <div class="resize-handle"></div>
+            <div class="image-info">
+                <div class="image-name"><%= imageName %></div>
+                <div class="controls">
+                    <button class="toggle-psnr">PSNR</button>
+                    <button class="toggle-ssim">SSIM</button>
+                    <button class="toggle-original">Original</button>
+                    <button class="toggle-diff">Diff</button>
+                </div>
+            </div>
+            <div class="slider-container">
+                <input type="range" class="diff-slider" style="display:none;">
+                <input type="number" class="diff-input" style="display:none;">
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
