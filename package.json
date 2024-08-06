@@ -4,6 +4,7 @@
     "main": "app.js",
     "scripts": {
         "start": "node app.js",
+        "render": "node render.js",  
         "deploy": "gh-pages -d public"
     },
     "dependencies": {
